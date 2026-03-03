@@ -7,40 +7,32 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
 
-/* Reset e Sfondo Base */
 html, body { height: 100%; margin: 0; padding: 0; }
 body {
     font-family: 'Fredoka', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #fff;
-    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; color: #fff;
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Sfondo home.jpg') no-repeat center center fixed;
-    background-size: cover;
-    transition: background 0.5s ease;
+    background-size: cover; transition: background 0.5s ease;
 }
 
-/* Header */
-.header-home { text-align: center; margin: 40px 0 20px 0; }
+.header-home { text-align: center; margin: 30px 0; }
 .titolo-amuni { font-size: 4.5rem; color: #FFDE59; -webkit-text-stroke: 2px #333; text-shadow: 8px 8px 0px #333; margin: 0; }
-.sottotitolo { text-shadow: 2px 2px 4px #000; font-weight: bold; margin-top: 10px; }
+.sottotitolo { text-shadow: 2px 2px 4px #000; font-weight: bold; }
 
-/* Bento Grid */
+/* BENTO GRID */
 .bento-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
-    width: 90%; max-width: 500px; margin-top: 20px;
+    width: 90%; max-width: 500px; margin-bottom: 30px;
 }
 .bento-item {
     border: 4px solid #333; border-radius: 28px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-decoration: none;
     color: #333 !important; font-weight: 700; background: white; cursor: pointer;
-    box-shadow: 8px 8px 0px #333; height: 100px;
+    box-shadow: 8px 8px 0px #333; height: 100px; text-align: center;
 }
 .item-large { grid-row: span 2; height: 215px; font-size: 1.2rem; }
 .item-wide { grid-column: span 2; height: 100px; flex-direction: row; gap: 10px; }
 
-/* Colori */
 .siti { background: #FFDE59 !important; }
 .eventi { background: #FF914D !important; }
 .mangiare { background: #FF5757 !important; }
@@ -48,62 +40,108 @@ body {
 .trasporti { background: #5CE1E6 !important; }
 .dormire { background: #BD97FF !important; }
 
-/* Sezioni */
+/* SEZIONI */
 .section { 
-    display: none; width: 90%; max-width: 550px; background: rgba(255,255,255,0.95); 
-    color: #333; border-radius: 30px; padding: 25px; margin: 20px 0; border: 4px solid #333;
+    display: none; width: 95%; max-width: 600px; background: rgba(255,255,255,0.98); 
+    color: #333; border-radius: 30px; padding: 20px; margin: 20px 0; border: 4px solid #333;
 }
 .active { display: block; animation: fadeIn 0.4s; }
-.section img { width: 100%; border-radius: 20px; margin: 15px 0; border: 2px solid #333; }
+.section img { width: 100%; border-radius: 20px; margin: 10px 0; border: 1px solid #ccc; }
+.section h2 { color: #d35400; border-bottom: 2px solid #FFDE59; padding-bottom: 5px; }
 .btn-back { background: #333; color: white; border: none; padding: 15px; width: 100%; border-radius: 15px; font-weight: bold; margin-top: 20px; cursor: pointer; }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
-<div id="home-content">
+<div id="home-content" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
     <div class="header-home">
         <h1 class="titolo-amuni">AMUNÌ</h1>
         <p class="sottotitolo">L'ESSENZA DI CACCAMO</p>
     </div>
 
+    <video width="90%" style="max-width:450px; border-radius:20px; border:4px solid #333; margin-bottom:20px;" controls>
+        <source src="Video Castellana.mp4" type="video/mp4">
+    </video>
+
     <div class="bento-grid">
-        <div onclick="showSection('siti-page', 'Sfondo Chiese.png')" class="bento-item item-large siti">🏰 Siti</div>
+        <div onclick="showSection('siti-page', 'Sfondo Chiese.png')" class="bento-item item-large siti">🏰 Siti Monumentali</div>
         <div onclick="showSection('eventi-page', 'Sfondo eventi.png')" class="bento-item eventi">🎉 Eventi</div>
         <div onclick="showSection('food-page', 'Sfondo food.png')" class="bento-item mangiare">🍝 Food</div>
-        <div onclick="showSection('tradizioni-page', 'Sfondo Chiese.png')" class="bento-item item-wide tradizioni">🙏 Tradizioni Locali</div>
+        <div onclick="showSection('tradizioni-page', 'Sfondo Chiese.png')" class="bento-item item-wide tradizioni">🙏 Tradizioni & Preghiere</div>
         <div onclick="showSection('info-page', 'Sfondo home.jpg')" class="bento-item trasporti">🚌 Vai</div>
-        <div onclick="showSection('info-page', 'Sfondo home.jpg')" class="bento-item dormire">🛌 Sleep</div>
+        <div onclick="showSection('sleep-page', 'Sfondo home.jpg')" class="bento-item dormire">🛌 Sleep</div>
     </div>
 </div>
 
 <div id="siti-page" class="section">
-    <h2>🏰 Siti Monumentali</h2>
+    <h2>🏰 Percorso delle Chiese</h2>
     <img src="Layout monumenti.jpg">
-    <video width="100%" controls style="border-radius:15px; border:2px solid #333;">
-        <source src="Video Castellana.mp4" type="video/mp4">
-    </video>
+    
+    <h3>Chiesa Madre San Giorgio</h3>
     <img src="Chiesa Madre.jpg">
+    <p>Il Duomo, ricostruito nel 1614, custodisce opere del Gagini e la splendida tela del miracolo di San Giorgio.</p>
     <img src="Chiesa Madre 2.jpg">
+
+    <h3>Chiesa dell'Annunziata</h3>
     <img src="Chiesa Annunziata.jpg">
+    <p>Celebre per le sue torri campanarie e il maestoso prospetto barocco.</p>
     <img src="Sepolcro Annunziata.jpg">
+
+    <h3>Chiesa della Badia</h3>
     <img src="Chiesa Badia.jpg">
+    <p>Un gioiello che ospita il pavimento maiolicato più bello della Sicilia.</p>
     <img src="Maioliche Badia.jpg">
+
+    <h3>Chiesa San Domenico</h3>
     <img src="Soffitto San Domenico.jpg">
+    <p>Famosa per il soffitto ligneo a cassettoni interamente dipinto.</p>
+
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
 <div id="tradizioni-page" class="section">
-    <h2>🙏 Tradizioni</h2>
+    <h2>🙏 Tradizioni e Preghiere</h2>
     <img src="Beato Giovanni.jpg">
-    <p>La fede e la storia di Caccamo.</p>
+    <h3>Preghiera al Beato Giovanni Liccio</h3>
+    <p style="font-style: italic; background: #f9f9f9; padding: 15px; border-radius: 10px;">
+        "O Beato Giovanni, che con la tua vita hai testimoniato l'amore di Dio per i poveri e gli afflitti, 
+        stendi la tua mano protettrice sulla nostra Caccamo. Intercedi per noi affinché possiamo camminare 
+        sempre nelle vie del Signore..."
+    </p>
+    <img src="San Teotista.jpg">
+    <p>La devozione a San Teotista, monaco basiliano e figlio illustre di questa terra.</p>
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
-<div id="eventi-page" class="section"><h2>🎉 Eventi</h2><img src="Sfondo eventi.png"><button class="btn-back" onclick="goHome()">🏠 HOME</button></div>
-<div id="food-page" class="section"><h2>🍝 Food</h2><img src="Sfondo food.png"><button class="btn-back" onclick="goHome()">🏠 HOME</button></div>
-<div id="info-page" class="section"><h2>🚌 Info</h2><p>Dettagli sui trasporti e accoglienza.</p><button class="btn-back" onclick="goHome()">🏠 HOME</button></div>
+<div id="eventi-page" class="section">
+    <h2>🎉 Eventi e Borgo</h2>
+    <img src="Sfondo eventi.png">
+    <p><b>La Castellana:</b> Corteo storico che rievoca i fasti medievali del castello.<br>
+    <b>Sagra della Salsiccia:</b> Ogni anno attira migliaia di turisti per gustare la salsiccia pasqualora.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="food-page" class="section">
+    <h2>🍝 Dove Mangiare</h2>
+    <img src="Sfondo food.png">
+    <p>La cucina caccamese è famosa per la <b>Salsiccia Pasqualora</b>, il pane "atturratu" e i dolci delle monache di clausura.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="info-page" class="section">
+    <h2>🚌 Info e Trasporti</h2>
+    <p>📍 <b>In Auto:</b> Da Palermo o Catania via A19, uscita Termini Imerese.<br>
+    🚌 <b>Autobus:</b> Linee giornaliere SAIS e AST da Palermo e Termini Imerese.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="sleep-page" class="section">
+    <h2>🛌 Dove Dormire</h2>
+    <p>Caccamo offre accoglienti B&B e case vacanza nel cuore del centro storico, sotto l'ombra del castello.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
 
 <script>
 function showSection(id, bg) {
@@ -112,11 +150,12 @@ function showSection(id, bg) {
     document.getElementById(id).classList.add('active');
     document.body.style.background = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('" + bg + "') no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
+    window.scrollTo(0,0);
 }
 
 function goHome() {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.getElementById('home-content').style.display = 'block';
+    document.getElementById('home-content').style.display = 'flex';
     document.body.style.background = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Sfondo home.jpg') no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
 }
