@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import
+url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+background: transparent !important;
+}
+body {
+font-family: 'Fredoka', sans-serif;
+display: flex;
+flex-direction: column;
+align-items: center;
+color: #fff;
+min-height: 100vh;
+}
+/* HEADER */
+.header-home {
+text-align: center;
+margin: 40px 0 20px 0;
+flex-shrink: 0;
+}
+.titolo-amuni {
+font-size: 4.5rem;
+color: #FFDE59;
+-webkit-text-stroke: 2px #333;
+text-shadow: 8px 8px 0px #333;
+margin: 0;
+line-height: 1;
+}
+.sottotitolo {
+text-shadow: 2px 2px 4px #000; /* BENTO GRID */
+.bento-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-auto-rows: 100px;
+gap: 15px;
+width: calc(100% - 30px);
+max-width: 500px;
+padding-bottom: 60px;
+margin-top: 20px;
+z-index: 10;
+}
+.bento-item {
+border: 4px solid #333;
+border-radius: 28px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+color: #333 !important;
+font-weight: 700;
+text-transform: uppercase;
+font-size: 1rem;
+transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+background: white; /* Fallback color */
+}
+.item-large { grid-row: span 2; grid-column: span 1; font-size: 1.2rem; }
+.item-wide { grid-column: span 2; grid-row: span 1; flex-direction: row; gap: 10px; }
+.item-small { grid-column: span 1; grid-row: span 1; }
+.bento-item:active { transform: scale(0.95); box-shadow: 4px 4px 0px #333 !important; }
+/* Palette Colori */
+.siti { background: #FFDE59 !important; box-shadow: 8px 8px 0px #333; }
+.eventi { background: #FF914D !important; box-shadow: 8px 8px 0px #333; }
+.mangiare { background: #FF5757 !important; box-shadow: 8px 8px 0px #333; }
+.trasporti { background: #5CE1E6 !important; box-shadow: 6px 6px 0px #333; }
+.dormire { background: #BD97FF !important; box-shadow: 6px 6px 0px #333; }
+.tradizioni { background: #7ED957 !important; box-shadow: 6px 6px 0px #333; }
+.icon { font-size: 2rem; margin-bottom: 5px; }
+.item-wide .icon { margin-bottom: 0; }
+</style> 
+<style>
+    .section { display: none; width: 100%; }
+    .section.active { display: block; }
+</style>
+<script>
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    if(document.querySelector('.bento-grid')) document.querySelector('.bento-grid').style.display = 'none';
+    const target = document.getElementById(id);
+    if(target) target.classList.add('active');
+    window.scrollTo(0,0);
+}
+</script>
+</head>
+<body>
+<div class="header-home">
+<h1 class="titolo-amuni">AMUNÌ</h1>
+<p class="sottotitolo">L'ESSENZA DI CACCAMO</p>
+</div>
+<div class="bento-grid">
+<a onclick="showSection(\'siti-monumentali\')" style="cursor:pointer" target="_top" class="bento-item
+item-large siti">
+<span class="icon">🏰</span> Siti
+</a>
+<a onclick="showSection(\'eventi-borgo\')" style="cursor:pointer" target="_top" class="bento-item
+item-small eventi">
+<span class="icon">🎉</span> Eventi
+</a>
+<a onclick="showSection(\'mangiare-e-bere\')" style="cursor:pointer" target="_top" class="bento-item
+item-small mangiare">
+<span class="icon">🍝</span> Food
+</a>
+<a onclick="showSection(\'preghiere-locali\')" style="cursor:pointer" target="_top" class="bento-item
+item-wide tradizioni">
+<span class="icon">🙏</span> Tradizioni Locali
+</a>
+<a onclick="showSection(\'spostarsi-nei-dintorni\')" style="cursor:pointer" target="_top" class="bento-item
+item-small trasporti">
+<span class="icon">🚌</span> Vai
+</a>
+<a onclick="showSection(\'strutture-ricettive-info-fjmrw\')" style="cursor:pointer" target="_top"
+class="bento-item item-small dormire">
+<span class="icon">🛌</span> Sleep
+</a>
+</div>
+<script type="text/javascript">
+(function(d, t) {
+var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+v.onload = function() {
+window.voiceflow.chat.load({
+verify: { projectID: '69688b21e8ee3a8419cbf2a7' },
+url: 'https://general-runtime.voiceflow.com',
+versionID: 'production' });
+}
+v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript";
+s.parentNode.insertBefore(v, s);
+})(document, 'script');
+</script>
+<script>
+(function() {
+// 1. BLOCCO GEOGRAFICO/LINGUA SOSPETTA (RU/ZH)
+const sospetti = ['ru', 'ru-RU', 'zh', 'zh-CN', 'zh-TW'];
+const userLang = navigator.language || navigator.userLanguage;
+if (sospetti.includes(userLang)) {
+console.log("Accesso limitato");
+// Opzionale: puoi decommentare la riga sotto per bloccarli del tutto
+// document.body.innerHTML = "<h1 style='color:black; padding:50px;'>Access
+Denied.</h1>";
+}
+// 2. CARICAMENTO INTELLIGENTE VOICEFLOW (Solo per umani)
+let chatbotCaricato = false;
+const caricaChatbot = () => {
+if (chatbotCaricato) return;
+chatbotCaricato = true;
+(function(d, t) {
+var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+v.onload = function() {
+window.voiceflow.chat.load({
+verify: { projectID: '69688b21e8ee3a8419cbf2a7' },
+url: 'https://general-runtime.voiceflow.com',
+versionID: 'production'
+});
+}
+v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+v.type = "text/javascript";
+s.parentNode.insertBefore(v, s);
+})(document, 'script');
+};
+// Carica il bot solo al primo movimento del mouse o tocco
+window.addEventListener('mousemove', caricaChatbot, {once: true});
+window.addEventListener('touchstart', caricaChatbot, {once: true});
+// 3. PROTEZIONE SUI CLIC (Anti-Fast-Bot)
+document.addEventListener('click', function(e) {
+if (e.isTrusted === false) { // Verifica se il clic è simulato via script
+e.preventDefault(); e.stopPropagation();
+alert("Bot activity detected.");
+}
+}, true);
+})();
