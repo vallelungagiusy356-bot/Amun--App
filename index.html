@@ -16,7 +16,7 @@ body {
     align-items: center;
     color: #fff;
     min-height: 100vh;
-    /* Sfondo base */
+    /* SFONDO ORIGINALE CARICATO */
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Sfondo home.jpg');
     background-size: cover;
     background-position: center;
@@ -24,15 +24,15 @@ body {
     transition: background 0.5s ease;
 }
 
-/* HEADER */
+/* HEADER ORIGINALE */
 .header-home { text-align: center; margin: 40px 0 20px 0; flex-shrink: 0; }
 .titolo-amuni {
     font-size: 4.5rem; color: #FFDE59; -webkit-text-stroke: 2px #333;
     text-shadow: 8px 8px 0px #333; margin: 0; line-height: 1;
 }
-.sottotitolo { text-shadow: 2px 2px 4px #000; font-weight: bold; }
+.sottotitolo { text-shadow: 2px 2px 4px #000; font-weight: bold; margin: 0; }
 
-/* BENTO GRID */
+/* BENTO GRID (Dall'originale borgo_code_txt.txt) */
 .bento-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 100px; gap: 15px;
     width: calc(100% - 30px); max-width: 500px; padding-bottom: 60px; margin-top: 20px;
@@ -46,18 +46,19 @@ body {
 .item-large { grid-row: span 2; grid-column: span 1; font-size: 1.2rem; }
 .item-wide { grid-column: span 2; grid-row: span 1; flex-direction: row; gap: 10px; }
 .item-small { grid-column: span 1; grid-row: span 1; }
-.bento-item:active { transform: scale(0.95); }
+.bento-item:active { transform: scale(0.95); box-shadow: 4px 4px 0px #333 !important; }
 
-/* COLORI BENTO */
+/* PALETTE COLORI ORIGINALE */
 .siti { background: #FFDE59 !important; box-shadow: 8px 8px 0px #333; }
 .eventi { background: #FF914D !important; box-shadow: 8px 8px 0px #333; }
 .mangiare { background: #FF5757 !important; box-shadow: 8px 8px 0px #333; }
 .trasporti { background: #5CE1E6 !important; box-shadow: 6px 6px 0px #333; }
 .dormire { background: #BD97FF !important; box-shadow: 6px 6px 0px #333; }
 .tradizioni { background: #7ED957 !important; box-shadow: 6px 6px 0px #333; }
-.icon { font-size: 2rem; }
+.icon { font-size: 2rem; margin-bottom: 5px; }
+.item-wide .icon { margin-bottom: 0; }
 
-/* SEZIONI CONTENUTO */
+/* SEZIONI CONTENUTO (Recuperate e corrette) */
 .section { 
     display: none; width: 90%; max-width: 550px; 
     background: rgba(255,255,255,0.95); color: #333; 
@@ -83,66 +84,73 @@ body {
     </div>
 
     <div class="bento-grid">
-        <div onclick="showSection('siti-page', 'Sfondo Chiese.png')" class="bento-item item-large siti">
+        <div onclick="showSection('siti-monumentali', 'Sfondo Chiese.png')" class="bento-item item-large siti">
             <span class="icon">🏰</span> Siti
         </div>
-        <div onclick="showSection('eventi-page', 'Sfondo eventi.png')" class="bento-item item-small eventi">
+        <div onclick="showSection('eventi-borgo', 'Sfondo eventi.png')" class="bento-item item-small eventi">
             <span class="icon">🎉</span> Eventi
         </div>
-        <div onclick="showSection('food-page', 'Sfondo food.png')" class="bento-item item-small mangiare">
+        <div onclick="showSection('mangiare-e-bere', 'Sfondo food.png')" class="bento-item item-small mangiare">
             <span class="icon">🍝</span> Food
         </div>
-        <div onclick="showSection('tradizioni-page', 'Sfondo Chiese.png')" class="bento-item item-wide tradizioni">
-            <span class="icon">🙏</span> Tradizioni
+        <div onclick="showSection('preghiere-locali', 'Sfondo Chiese.png')" class="bento-item item-wide tradizioni">
+            <span class="icon">🙏</span> Tradizioni Locali
         </div>
-        <div onclick="showSection('info-page', 'Sfondo home.jpg')" class="bento-item item-small trasporti">
+        <div onclick="showSection('spostarsi-nei-dintorni', 'Sfondo home.jpg')" class="bento-item item-small trasporti">
             <span class="icon">🚌</span> Vai
         </div>
-        <div onclick="showSection('info-page', 'Sfondo home.jpg')" class="bento-item item-small dormire">
+        <div onclick="showSection('strutture-ricettive', 'Sfondo home.jpg')" class="bento-item item-small dormire">
             <span class="icon">🛌</span> Sleep
         </div>
     </div>
 </div>
 
-<div id="siti-page" class="section">
+<div id="siti-monumentali" class="section">
     <h2>🏰 Siti Monumentali</h2>
+    <img src="Layout monumenti.jpg" alt="Layout">
     <video width="100%" controls style="border-radius:15px; border:2px solid #333;">
         <source src="Video Castellana.mp4" type="video/mp4">
     </video>
-    <p>Il <b>Castello di Caccamo</b> è uno dei manieri medievali più grandi e meglio conservati d'Italia.</p>
+    <p>Scopri il Castello di Caccamo, il maniero più grande della Sicilia.</p>
     <img src="Chiesa Madre.jpg" alt="Chiesa Madre">
-    <p>La <b>Chiesa Madre San Giorgio</b> rappresenta il cuore barocco della città.</p>
+    <img src="Chiesa Annunziata.jpg" alt="Annunziata">
+    <img src="Sepolcro Annunziata.jpg" alt="Sepolcro">
+    <img src="Chiesa Badia.jpg" alt="Badia">
+    <img src="Maioliche Badia.jpg" alt="Maioliche">
+    <img src="Soffitto San Domenico.jpg" alt="San Domenico">
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
-<div id="eventi-page" class="section">
-    <h2>🎉 Eventi nel Borgo</h2>
+<div id="eventi-borgo" class="section">
+    <h2>🎉 Eventi e Borgo</h2>
     <img src="Sfondo eventi.png">
-    <p>Non perdere la <b>Rievocazione della Castellana</b> e le sagre tipiche che animano i vicoli ogni stagione.</p>
+    <p>Vivi le tradizioni secolari e le manifestazioni medievali di Caccamo.</p>
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
-<div id="food-page" class="section">
-    <h2>🍝 Food & Sapori</h2>
+<div id="mangiare-e-bere" class="section">
+    <h2>🍝 Dove Mangiare</h2>
     <img src="Sfondo food.png">
-    <p>Assaggia la tipica <b>Salsiccia di Caccamo</b> e i prodotti da forno tradizionali.</p>
+    <p>Dalla salsiccia pasqualora ai sapori tipici della terra siciliana.</p>
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
-<div id="tradizioni-page" class="section">
+<div id="preghiere-locali" class="section">
     <h2>🙏 Tradizioni Locali</h2>
-    <img src="Beato Giovanni.jpg">
-    <p>Il culto del <b>Beato Giovanni Liccio</b>, protettore della città.</p>
-    <img src="San Teotista.jpg">
-    <p>La devozione per <b>San Teotista</b>, monaco e figura spirituale storica di Caccamo.</p>
+    <img src="Beato Giovanni.jpg" alt="Beato Giovanni">
+    <p>La fede e la storia si intrecciano nel culto dei nostri santi protettori.</p>
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
-<div id="info-page" class="section">
-    <h2>🚌 Info e Trasporti</h2>
-    <p>📍 <b>Posizione:</b> Caccamo (PA), Sicilia.</p>
-    <p>🚗 <b>In auto:</b> Autostrada A19 uscita Termini Imerese.</p>
-    <p>🛏️ <b>Sleep:</b> Trova accoglienza nei B&B situati tra i vicoli del centro storico.</p>
+<div id="spostarsi-nei-dintorni" class="section">
+    <h2>🚌 Spostarsi e Info</h2>
+    <p>Tutte le informazioni necessarie per vivere al meglio il borgo.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="strutture-ricettive" class="section">
+    <h2>🛌 Dove Dormire</h2>
+    <p>Ospitalità e accoglienza nel cuore di Caccamo.</p>
     <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
 
