@@ -1,178 +1,181 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amunì - L'Essenza di Caccamo</title>
 <style>
-@import
-url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
-html, body {
-height: 100%;
-margin: 0;
-padding: 0;
-background: transparent !important;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
 body {
-font-family: 'Fredoka', sans-serif;
-display: flex;
-flex-direction: column;
-align-items: center;
-color: #fff;
-min-height: 100vh;
+    font-family: 'Fredoka', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    min-height: 100vh;
+    /* Sfondo base */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Sfondo home.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background 0.5s ease;
 }
+
 /* HEADER */
-.header-home {
-text-align: center;
-margin: 40px 0 20px 0;
-flex-shrink: 0;
-}
+.header-home { text-align: center; margin: 40px 0 20px 0; flex-shrink: 0; }
 .titolo-amuni {
-font-size: 4.5rem;
-color: #FFDE59;
--webkit-text-stroke: 2px #333;
-text-shadow: 8px 8px 0px #333;
-margin: 0;
-line-height: 1;
+    font-size: 4.5rem; color: #FFDE59; -webkit-text-stroke: 2px #333;
+    text-shadow: 8px 8px 0px #333; margin: 0; line-height: 1;
 }
-.sottotitolo {
-text-shadow: 2px 2px 4px #000; /* BENTO GRID */
+.sottotitolo { text-shadow: 2px 2px 4px #000; font-weight: bold; }
+
+/* BENTO GRID */
 .bento-grid {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-auto-rows: 100px;
-gap: 15px;
-width: calc(100% - 30px);
-max-width: 500px;
-padding-bottom: 60px;
-margin-top: 20px;
-z-index: 10;
+    display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 100px; gap: 15px;
+    width: calc(100% - 30px); max-width: 500px; padding-bottom: 60px; margin-top: 20px;
 }
 .bento-item {
-border: 4px solid #333;
-border-radius: 28px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-decoration: none;
-color: #333 !important;
-font-weight: 700;
-text-transform: uppercase;
-font-size: 1rem;
-transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-position: relative;
-background: white; /* Fallback color */
+    border: 4px solid #333; border-radius: 28px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-decoration: none;
+    color: #333 !important; font-weight: 700; text-transform: uppercase;
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: white; cursor: pointer;
 }
 .item-large { grid-row: span 2; grid-column: span 1; font-size: 1.2rem; }
 .item-wide { grid-column: span 2; grid-row: span 1; flex-direction: row; gap: 10px; }
 .item-small { grid-column: span 1; grid-row: span 1; }
-.bento-item:active { transform: scale(0.95); box-shadow: 4px 4px 0px #333 !important; }
-/* Palette Colori */
+.bento-item:active { transform: scale(0.95); }
+
+/* COLORI BENTO */
 .siti { background: #FFDE59 !important; box-shadow: 8px 8px 0px #333; }
 .eventi { background: #FF914D !important; box-shadow: 8px 8px 0px #333; }
 .mangiare { background: #FF5757 !important; box-shadow: 8px 8px 0px #333; }
 .trasporti { background: #5CE1E6 !important; box-shadow: 6px 6px 0px #333; }
 .dormire { background: #BD97FF !important; box-shadow: 6px 6px 0px #333; }
 .tradizioni { background: #7ED957 !important; box-shadow: 6px 6px 0px #333; }
-.icon { font-size: 2rem; margin-bottom: 5px; }
-.item-wide .icon { margin-bottom: 0; }
-</style> 
-<style>
-    .section { display: none; width: 100%; }
-    .section.active { display: block; }
-</style>
-<script>
-function showSection(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    if(document.querySelector('.bento-grid')) document.querySelector('.bento-grid').style.display = 'none';
-    const target = document.getElementById(id);
-    if(target) target.classList.add('active');
-    window.scrollTo(0,0);
+.icon { font-size: 2rem; }
+
+/* SEZIONI CONTENUTO */
+.section { 
+    display: none; width: 90%; max-width: 550px; 
+    background: rgba(255,255,255,0.95); color: #333; 
+    border-radius: 30px; padding: 25px; margin: 20px 0; 
+    border: 4px solid #333; box-sizing: border-box;
 }
-</script>
+.section.active { display: block; animation: fadeIn 0.4s; }
+.section img { width: 100%; border-radius: 20px; margin: 15px 0; border: 2px solid #333; }
+.btn-back {
+    background: #333; color: white; border: none; padding: 15px; width: 100%;
+    border-radius: 15px; font-weight: bold; margin-top: 20px; cursor: pointer;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
 </head>
 <body>
-<div class="header-home">
-<h1 class="titolo-amuni">AMUNÌ</h1>
-<p class="sottotitolo">L'ESSENZA DI CACCAMO</p>
+
+<div id="home-wrapper" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <div class="header-home">
+        <h1 class="titolo-amuni">AMUNÌ</h1>
+        <p class="sottotitolo">L'ESSENZA DI CACCAMO</p>
+    </div>
+
+    <div class="bento-grid">
+        <div onclick="showSection('siti-page', 'Sfondo Chiese.png')" class="bento-item item-large siti">
+            <span class="icon">🏰</span> Siti
+        </div>
+        <div onclick="showSection('eventi-page', 'Sfondo eventi.png')" class="bento-item item-small eventi">
+            <span class="icon">🎉</span> Eventi
+        </div>
+        <div onclick="showSection('food-page', 'Sfondo food.png')" class="bento-item item-small mangiare">
+            <span class="icon">🍝</span> Food
+        </div>
+        <div onclick="showSection('tradizioni-page', 'Sfondo Chiese.png')" class="bento-item item-wide tradizioni">
+            <span class="icon">🙏</span> Tradizioni
+        </div>
+        <div onclick="showSection('info-page', 'Sfondo home.jpg')" class="bento-item item-small trasporti">
+            <span class="icon">🚌</span> Vai
+        </div>
+        <div onclick="showSection('info-page', 'Sfondo home.jpg')" class="bento-item item-small dormire">
+            <span class="icon">🛌</span> Sleep
+        </div>
+    </div>
 </div>
-<div class="bento-grid">
-<a onclick="showSection(\'siti-monumentali\')" style="cursor:pointer" target="_top" class="bento-item
-item-large siti">
-<span class="icon">🏰</span> Siti
-</a>
-<a onclick="showSection(\'eventi-borgo\')" style="cursor:pointer" target="_top" class="bento-item
-item-small eventi">
-<span class="icon">🎉</span> Eventi
-</a>
-<a onclick="showSection(\'mangiare-e-bere\')" style="cursor:pointer" target="_top" class="bento-item
-item-small mangiare">
-<span class="icon">🍝</span> Food
-</a>
-<a onclick="showSection(\'preghiere-locali\')" style="cursor:pointer" target="_top" class="bento-item
-item-wide tradizioni">
-<span class="icon">🙏</span> Tradizioni Locali
-</a>
-<a onclick="showSection(\'spostarsi-nei-dintorni\')" style="cursor:pointer" target="_top" class="bento-item
-item-small trasporti">
-<span class="icon">🚌</span> Vai
-</a>
-<a onclick="showSection(\'strutture-ricettive-info-fjmrw\')" style="cursor:pointer" target="_top"
-class="bento-item item-small dormire">
-<span class="icon">🛌</span> Sleep
-</a>
+
+<div id="siti-page" class="section">
+    <h2>🏰 Siti Monumentali</h2>
+    <video width="100%" controls style="border-radius:15px; border:2px solid #333;">
+        <source src="Video Castellana.mp4" type="video/mp4">
+    </video>
+    <p>Il <b>Castello di Caccamo</b> è uno dei manieri medievali più grandi e meglio conservati d'Italia.</p>
+    <img src="Chiesa Madre.jpg" alt="Chiesa Madre">
+    <p>La <b>Chiesa Madre San Giorgio</b> rappresenta il cuore barocco della città.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
 </div>
+
+<div id="eventi-page" class="section">
+    <h2>🎉 Eventi nel Borgo</h2>
+    <img src="Sfondo eventi.png">
+    <p>Non perdere la <b>Rievocazione della Castellana</b> e le sagre tipiche che animano i vicoli ogni stagione.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="food-page" class="section">
+    <h2>🍝 Food & Sapori</h2>
+    <img src="Sfondo food.png">
+    <p>Assaggia la tipica <b>Salsiccia di Caccamo</b> e i prodotti da forno tradizionali.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="tradizioni-page" class="section">
+    <h2>🙏 Tradizioni Locali</h2>
+    <img src="Beato Giovanni.jpg">
+    <p>Il culto del <b>Beato Giovanni Liccio</b>, protettore della città.</p>
+    <img src="San Teotista.jpg">
+    <p>La devozione per <b>San Teotista</b>, monaco e figura spirituale storica di Caccamo.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<div id="info-page" class="section">
+    <h2>🚌 Info e Trasporti</h2>
+    <p>📍 <b>Posizione:</b> Caccamo (PA), Sicilia.</p>
+    <p>🚗 <b>In auto:</b> Autostrada A19 uscita Termini Imerese.</p>
+    <p>🛏️ <b>Sleep:</b> Trova accoglienza nei B&B situati tra i vicoli del centro storico.</p>
+    <button class="btn-back" onclick="goHome()">🏠 TORNA ALLA HOME</button>
+</div>
+
+<script>
+function showSection(id, bgImage) {
+    document.getElementById('home-wrapper').style.display = 'none';
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.body.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('" + bgImage + "')";
+    window.scrollTo(0,0);
+}
+
+function goHome() {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('home-wrapper').style.display = 'flex';
+    document.body.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Sfondo home.jpg')";
+}
+</script>
+
 <script type="text/javascript">
 (function(d, t) {
-var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-v.onload = function() {
-window.voiceflow.chat.load({
-verify: { projectID: '69688b21e8ee3a8419cbf2a7' },
-url: 'https://general-runtime.voiceflow.com',
-versionID: 'production' });
-}
-v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript";
-s.parentNode.insertBefore(v, s);
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+        window.voiceflow.chat.load({
+            verify: { projectID: '69688b21e8ee3a8419cbf2a7' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+        });
+    }
+    v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript";
+    s.parentNode.insertBefore(v, s);
 })(document, 'script');
 </script>
-<script>
-(function() {
-// 1. BLOCCO GEOGRAFICO/LINGUA SOSPETTA (RU/ZH)
-const sospetti = ['ru', 'ru-RU', 'zh', 'zh-CN', 'zh-TW'];
-const userLang = navigator.language || navigator.userLanguage;
-if (sospetti.includes(userLang)) {
-console.log("Accesso limitato");
-// Opzionale: puoi decommentare la riga sotto per bloccarli del tutto
-// document.body.innerHTML = "<h1 style='color:black; padding:50px;'>Access
-Denied.</h1>";
-}
-// 2. CARICAMENTO INTELLIGENTE VOICEFLOW (Solo per umani)
-let chatbotCaricato = false;
-const caricaChatbot = () => {
-if (chatbotCaricato) return;
-chatbotCaricato = true;
-(function(d, t) {
-var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-v.onload = function() {
-window.voiceflow.chat.load({
-verify: { projectID: '69688b21e8ee3a8419cbf2a7' },
-url: 'https://general-runtime.voiceflow.com',
-versionID: 'production'
-});
-}
-v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-v.type = "text/javascript";
-s.parentNode.insertBefore(v, s);
-})(document, 'script');
-};
-// Carica il bot solo al primo movimento del mouse o tocco
-window.addEventListener('mousemove', caricaChatbot, {once: true});
-window.addEventListener('touchstart', caricaChatbot, {once: true});
-// 3. PROTEZIONE SUI CLIC (Anti-Fast-Bot)
-document.addEventListener('click', function(e) {
-if (e.isTrusted === false) { // Verifica se il clic è simulato via script
-e.preventDefault(); e.stopPropagation();
-alert("Bot activity detected.");
-}
-}, true);
-})();
+
+</body>
+</html>
